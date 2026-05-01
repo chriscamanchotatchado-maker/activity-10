@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Municipality of Ipil</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+nav {
+  background: #2c3e50;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav h2 {
+  margin: 0;
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+  padding: 40px;
+}
+
+.home {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Ipil_Rotunda.jpg') no-repeat center/cover;
+  color: white;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* GALLERY */
+.gallery img {
+  width: 30%;
+  margin: 5px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #34495e;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 200px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .gallery img {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Ipil</h2>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="menu" id="menu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#spots">Tourist Spots</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="home" id="home">
+  <h1>Welcome to Ipil, Zamboanga Sibugay</h1>
+</section>
+
+<section id="about">
+  <h2>About Ipil</h2>
+  <p>Ipil is the capital municipality of Zamboanga Sibugay. It is known for its peaceful community, growing economy, and beautiful local attractions.</p>
+</section>
+
+<section id="spots">
+  <h2>Tourist Spots</h2>
+  <ul>
+    <li>Ipil Rotunda</li>
+    <li>Capitol Grounds</li>
+    <li>Buluan Island</li>
+    <li>Local Beaches</li>
+  </ul>
+</section>
+
+<section id="gallery" class="gallery">
+  <h2>Gallery</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ipil_Rotunda.jpg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Zamboanga_Sibugay_Capitol.jpg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Philippines_beach.jpg">
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: ipil@gmail.com</p>
+  <p>Phone: 09123456789</p>
+</section>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
