@@ -1,143 +1,1068 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Municipality of Ipil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipality of Ipil | Heart of Sibugay</title>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+        :root {
+            --nude: #E8DDD4;
+            --nude-light: #F5F0EB;
+            --nude-dark: #D4C4B5;
+            --pink-light: #F8E1E7;
+            --pink: #E8B4BC;
+            --pink-dark: #D4919C;
+            --rose: #C77B8B;
+            --text-dark: #4A3F3F;
+            --text-light: #6B5E5E;
+            --white: #FFFFFF;
+        }
 
-/* NAVBAR */
-nav {
-  background: #2c3e50;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-nav h2 {
-  margin: 0;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--nude-light) 0%, var(--pink-light) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
 
-.menu {
-  display: flex;
-  gap: 15px;
-}
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, rgba(232, 221, 212, 0.95) 0%, rgba(248, 225, 231, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(199, 123, 139, 0.15);
+        }
 
-.menu a {
-  color: white;
-  text-decoration: none;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.menu-btn {
-  display: none;
-  font-size: 20px;
-  cursor: pointer;
-}
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+        }
 
-/* SECTIONS */
-section {
-  padding: 40px;
-}
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
 
-.home {
-  background: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Ipil_Rotunda.jpg') no-repeat center/cover;
-  color: white;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: var(--rose);
+            letter-spacing: 2px;
+        }
 
-/* GALLERY */
-.gallery img {
-  width: 30%;
-  margin: 5px;
-}
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-/* MOBILE */
-@media(max-width:768px){
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #34495e;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    width: 200px;
-  }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
 
-  .menu.show {
-    display: flex;
-  }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--pink) 0%, var(--rose) 100%);
+            transition: width 0.3s ease;
+        }
 
-  .menu-btn {
-    display: block;
-  }
+        .nav-links a:hover {
+            color: var(--rose);
+        }
 
-  .gallery img {
-    width: 100%;
-  }
-}
-</style>
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--rose);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 80px;
+            background: 
+                linear-gradient(135deg, rgba(232, 221, 212, 0.9) 0%, rgba(248, 225, 231, 0.85) 100%),
+                url('[upload.wikimedia.org](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ipil_Zamboanga_Sibugay.jpg/1280px-Ipil_Zamboanga_Sibugay.jpg)');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--pink) 0%, var(--rose) 100%);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--pink-dark) 0%, var(--rose) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--pink) 0%, var(--rose) 100%);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(199, 123, 139, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(199, 123, 139, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--rose);
+            border: 2px solid var(--pink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--pink-light);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink) 0%, var(--rose) 100%);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(199, 123, 139, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--pink);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--nude-light) 0%, var(--pink-light) 100%);
+            border-radius: 15px;
+        }
+
+        .stat-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--rose);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, var(--nude-light) 0%, var(--pink-light) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(199, 123, 139, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(199, 123, 139, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--rose);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Tourism Section */
+        .tourism {
+            background: var(--white);
+        }
+
+        .tourism-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tourism-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 15px 50px rgba(199, 123, 139, 0.15);
+        }
+
+        .tourism-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tourism-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .tourism-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(74, 63, 63, 0.9));
+            color: var(--white);
+        }
+
+        .tourism-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tourism-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--nude) 0%, var(--pink-light) 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .contact-item div h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item div p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(199, 123, 139, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--nude);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #3D3535 100%);
+            color: var(--white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--pink-light);
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--pink-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 100%);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(180deg, rgba(232, 221, 212, 0.98) 0%, rgba(248, 225, 231, 0.98) 100%);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+                box-shadow: 0 10px 30px rgba(199, 123, 139, 0.2);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tourism-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tourism-card {
+                height: 300px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="[upload.wikimedia.org](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Ipil_Zamboanga_Sibugay_seal.png/200px-Ipil_Zamboanga_Sibugay_seal.png)" alt="Ipil Seal">
+            <div class="logo-text">
+                Municipality of Ipil
+                <span>Heart of Sibugay</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#tourism">Tourism</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-<nav>
-  <h2>Ipil</h2>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <div class="menu" id="menu">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#spots">Tourist Spots</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Welcome to Ipil</div>
+            <h1>Discover the <span>Heart of Sibugay</span></h1>
+            <p>Experience the beauty, culture, and warm hospitality of Ipil — the capital municipality of Zamboanga Sibugay, where progress meets tradition in perfect harmony.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">
+                    <i class="fas fa-compass"></i> Explore Now
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
 
-<section class="home" id="home">
-  <h1>Welcome to Ipil, Zamboanga Sibugay</h1>
-</section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2>About Our Municipality</h2>
+            <p>Learn more about the rich history and vibrant community of Ipil</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="[upload.wikimedia.org](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Zamboanga_Sibugay_Provincial_Capitol.jpg/1280px-Zamboanga_Sibugay_Provincial_Capitol.jpg)" alt="Zamboanga Sibugay Provincial Capitol">
+            </div>
+            <div class="about-content">
+                <h3>A Story of Resilience and Progress</h3>
+                <p>Ipil is the capital and most populous municipality of the province of Zamboanga Sibugay in the Philippines. Known as the "Heart of Sibugay" and "Crossroads of Region IX," our municipality serves as a major commercial and economic center in the region.</p>
+                <p>Originally known as Sanito, Ipil was established as a municipality on July 26, 1949. The name "Ipil" was derived from the abundance of Ipil trees found in the area. Today, we are home to a vibrant community of over 96,000 people, united in our pursuit of progress and prosperity.</p>
+                <p>Our town hosts the only airport in the province — Ipil Airport — and is strategically located three hours from key cities like Zamboanga City, Pagadian, and Dipolog.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>96,363</h4>
+                        <p>Population (2024)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>28</h4>
+                        <p>Barangays</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>241.6</h4>
+                        <p>Sq. Km Area</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="about">
-  <h2>About Ipil</h2>
-  <p>Ipil is the capital municipality of Zamboanga Sibugay. It is known for its peaceful community, growing economy, and beautiful local attractions.</p>
-</section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Government Services</h2>
+            <p>We are committed to providing efficient and accessible services to all Ipileños</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Civil Registry</h3>
+                <p>Birth certificates, marriage licenses, death certificates, and other vital documents for residents.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Business Permits</h3>
+                <p>Streamlined processing for business permits, licenses, and clearances for local entrepreneurs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Health Services</h3>
+                <p>Primary healthcare, medical assistance programs, and access to provincial hospital facilities.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Education Support</h3>
+                <p>Scholarship programs, educational assistance, and support for local schools and students.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Social Welfare</h3>
+                <p>Assistance programs for senior citizens, PWDs, solo parents, and indigent families.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tractor"></i>
+                </div>
+                <h3>Agriculture</h3>
+                <p>Farm assistance, livelihood programs, and agricultural development initiatives for farmers.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="spots">
-  <h2>Tourist Spots</h2>
-  <ul>
-    <li>Ipil Rotunda</li>
-    <li>Capitol Grounds</li>
-    <li>Buluan Island</li>
-    <li>Local Beaches</li>
-  </ul>
-</section>
+    <!-- Tourism Section -->
+    <section class="tourism" id="tourism">
+        <div class="section-header">
+            <h2>Explore Ipil</h2>
+            <p>Discover the natural wonders and cultural treasures of our municipality</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="tourism-grid">
+            <div class="tourism-card">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800)" alt="Ipil Beaches">
+                <div class="tourism-overlay">
+                    <h3>Pristine Beaches</h3>
+                    <p>Enjoy the serene coastline and beautiful seaport area, perfect for relaxation and water activities.</p>
+                </div>
+            </div>
+            <div class="tourism-card">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800)" alt="Provincial Capitol">
+                <div class="tourism-overlay">
+                    <h3>Provincial Capitol</h3>
+                    <p>Visit the iconic Zamboanga Sibugay Provincial Capitol and the stunning Rotunda Obelisk landmark.</p>
+                </div>
+            </div>
+            <div class="tourism-card">
+                <img src="[images.unsplash.com](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800)" alt="Mountain Views">
+                <div class="tourism-overlay">
+                    <h3>Mountain Landscapes</h3>
+                    <p>Explore the rolling hills and lush mountain terrain surrounding our municipality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="gallery" class="gallery">
-  <h2>Gallery</h2>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ipil_Rotunda.jpg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Zamboanga_Sibugay_Capitol.jpg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Philippines_beach.jpg">
-</section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you. Reach out to us for inquiries and assistance.</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>Visit us at the Municipal Hall or send us a message. Our dedicated staff is ready to assist you with your concerns and inquiries.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Municipal Hall, Poblacion, Ipil<br>Zamboanga Sibugay, 7001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+63 (062) 333-2288</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>lgu.ipil@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: ipil@gmail.com</p>
-  <p>Phone: 09123456789</p>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Municipality of Ipil</h4>
+                <p>The Heart of Sibugay — your gateway to progress, culture, and natural beauty in Zamboanga Sibugay. We are committed to serving our constituents with excellence and integrity.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Government Services</a></li>
+                    <li><a href="#tourism">Tourism</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Government Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Office of the Mayor</a></li>
+                    <li><a href="#">Municipal Council</a></li>
+                    <li><a href="#">Provincial Government</a></li>
+                    <li><a href="#">DILG Zamboanga Sibugay</a></li>
+                    <li><a href="#">Philippine Government Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Civil Registry</a></li>
+                    <li><a href="#">Business Permits</a></li>
+                    <li><a href="#">Health Services</a></li>
+                    <li><a href="#">Social Welfare</a></li>
+                    <li><a href="#">Agricultural Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Municipality of Ipil, Zamboanga Sibugay. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("show");
-}
-</script>
+    <script>
+        // Mobile Navigation Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
 
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.hamburger').classList.remove('active');
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 30px rgba(199, 123, 139, 0.2)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(199, 123, 139, 0.15)';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
